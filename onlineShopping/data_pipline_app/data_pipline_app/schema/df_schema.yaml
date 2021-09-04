@@ -1,0 +1,5 @@
+initial_cleansing:
+  - keep_unique_customer_ids
+post_column_cleansing:
+  - convert_datatype
+  - negative_to_zero

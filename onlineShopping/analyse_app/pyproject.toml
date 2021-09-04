@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "analyse_app"
+version = "0.1.0"
+description = ""
+authors = ["amaljose <aj4amaljose@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+SQLAlchemy = "^1.4.23"
+fastapi = "^0.68.1"
+uvicorn = {extras = ["standard"], version = "^0.15.0"}
+database-app = {path = "../database_app"}
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

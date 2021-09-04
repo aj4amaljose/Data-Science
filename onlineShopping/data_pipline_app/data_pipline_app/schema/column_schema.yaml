@@ -1,0 +1,247 @@
+customer_id:
+ type: string
+ description: ID of the customer - super duper hashed
+ is_unique: true
+days_since_first_order:
+  type: integer
+  description: Days since the first order was made
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+days_since_last_order:
+  type: integer
+  description: Days since the last order was made
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+is_newsletter_subscriber:
+  type: string
+  description: Flag for a newsletter subscriber
+  cleansing_methods:
+   - replace_unallowed_values
+  allowed_values:
+   - Y
+   - N
+  default_value: N
+orders:
+  type: integer
+  description: Number of orders
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+items:
+  type: integer
+  description: Number of items
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+cancels:
+  type: integer
+  description: Number of cancellations - when the order is cancelled after being placed
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+returns:
+  type: integer
+  description: Number of returned orders
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+different_addresses:
+  type: integer
+  description: Number of times a different billing and shipping address was used
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+shipping_addresses:
+  type: integer
+  description: Number of different shipping addresses used
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+devices:
+  type: integer
+  description: Number of unique devices used
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+vouchers:
+  type: integer
+  description: Number of times a voucher was applied
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+cc_payments:
+  type: integer
+  description: Number of times a credit card was used for payment
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+paypal_payments:
+  type: integer
+  description: Number of times PayPal was used for payment
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+afterpay_payments:
+  type: integer
+  description: Number of times AfterPay was used for payment
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+apple_payments:
+  type: integer
+  description: Number of times Apple Pay was used for payment
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+female_items:
+  type: integer
+  description: Number of female items purchased
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+male_items:
+  type: integer
+  description: Number of male items purchased
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+unisex_items:
+  type: integer
+  description: Number of unisex items purchased
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+wapp_items:
+  type: integer
+  description: Number of Women Apparel items purchased
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+wftw_items:
+  type: integer
+  description: Number of Women Footwear items purchased
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+mapp_items:
+  type: integer
+  description: Number of Men Apparel items purchased
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+wacc_items:
+  type: integer
+  description: Number of Women Accessories items purchased
+  cleansing_methods:
+   - string_to_zero
+   - nan_to_zero
+macc_items:
+ type: integer
+ description: Number of Men Accessories items purchased
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+mftw_items:
+ type: integer
+ description: Number of Men Footwear items purchased
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+wspt_items:
+ type: integer
+ description: Number of Women Sport items purchased
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+mspt_items:
+ type: integer
+ description: Number of Men Sport items purchased
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+curvy_items:
+ type: integer
+ description: Number of Curvy items purchased
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+sacc_items:
+ type: integer
+ description: Number of Sport Accessories items purchased
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+msite_orders:
+ type: integer
+ description: Number of Mobile Site orders
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+desktop_orders:
+ type: integer
+ description: Number of Desktop orders
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+android_orders:
+ type: integer
+ description: Number of Android app orders
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+ios_orders:
+ type: integer
+ description: Number of iOS app orders
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+other_device_orders:
+ type: integer
+ description: Number of Other device orders
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+work_orders:
+ type: integer
+ description: Number of orders shipped to work
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+home_orders:
+ type: integer
+ description: Number of orders shipped to home
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+parcelpoint_orders:
+ type: integer
+ description: Number of orders shipped to a parcelpoint
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+other_collection_orders:
+ type: integer
+ description: Number of orders shipped to other collection points
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+average_discount_onoffer:
+ type: float
+ description: Average discount rate of items typically purchased
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+average_discount_used:
+ type: float
+ description: Average discount finally used on top of existing discount
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
+revenue:
+ type: float
+ description: $ Dollar spent overall per person
+ cleansing_methods:
+  - string_to_zero
+  - nan_to_zero
