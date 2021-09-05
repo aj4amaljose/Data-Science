@@ -1,3 +1,6 @@
+"""
+Handles extraction for different file types
+"""
 import yaml
 import io
 import pandas as pd
@@ -11,6 +14,12 @@ handler_mapping = mapping
 
 @set_handler_mapping('newline_delimited_json')
 def read_newline_delimited_json_file(io_file):
+    """
+    Read newline delimited json
+
+    :param io_file: Io file reference
+    :return: Dataframe
+    """
     try:
         data_frame = pd.read_json(io_file, lines=True)
         return data_frame
@@ -19,6 +28,12 @@ def read_newline_delimited_json_file(io_file):
 
 
 def read_yaml(file_path):
+    """
+    Read yaml file
+
+    :param file_path: File path
+    :return: Yaml data
+    """
     config = dict()
     with open(file_path, 'r') as stream:
         try:
@@ -30,7 +45,17 @@ def read_yaml(file_path):
 
 
 def process_zip_file(file_path, file_type_in_zip):
-    zip_file_handler = zipfile.ZipFile(file_path, 'r')
-    password=hashlib.sha256(file_extraction_password.encode('ascii')).hexdigest()
-    for _file in zip_file_handler.namelist():
-        yield handler_mapping[file_type_in_zip](io_file=zip_file_handler.open(_file, pwd=bytes(password, 'utf-8')))
+    """
+    Process zip file
+
+    :param file_path: File path
+    :param file_type_in_zip: File type in zip file
+    :return:
+    """
+    try:
+        zip_file_handler = zipfile.ZipFile(file_path, 'r')
+        password=hashlib.sha256(file_extraction_password.encode('ascii')).hexdigest()
+        for _file in zip_file_handler.namelist():
+            yield handler_mapping[file_type_in_zip](io_file=zip_file_handler.open(_file, pwd=bytes(password, 'utf-8')))
+    except Exception as exc:
+        print(exc)

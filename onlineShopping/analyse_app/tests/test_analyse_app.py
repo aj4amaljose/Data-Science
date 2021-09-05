@@ -1,4 +1,4 @@
-from analyse_app import __version__
+from analyse_app.analyse_app import __version__
 
 
 def test_version():

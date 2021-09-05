@@ -1,3 +1,6 @@
+"""
+Entrypoint to Database Management App
+"""
 import argparse
 from sqlalchemy import create_engine
 from helpers.manage_table import engine_model_mappings, manage_all_tables

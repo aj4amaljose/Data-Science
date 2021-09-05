@@ -9,7 +9,6 @@ python = "^3.8"
 SQLAlchemy = "^1.4.23"
 fastapi = "^0.68.1"
 uvicorn = {extras = ["standard"], version = "^0.15.0"}
-database-app = {path = "../database_app"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

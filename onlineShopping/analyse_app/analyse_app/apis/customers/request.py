@@ -1,3 +1,6 @@
+"""
+Handles requests trelated o Customer
+"""
 from .customers import Customers
 from fastapi import FastAPI, Depends, status, Response, HTTPException
 from database import session_helper
@@ -5,6 +8,12 @@ from sqlalchemy.orm import Session
 
 
 def entry_point(app):
+    """
+    Handles api requests related to Customer details
+
+    :param app: FastApi app
+    :return: Query response
+    """
     @app.post("/customers")
     def calculate_revenue(customer: Customers, response: Response,
                           session: Session = Depends(session_helper.get_session)):

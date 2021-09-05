@@ -1,4 +1,4 @@
-from database_app import __version__
+from database_app.database_app import __version__
 
 
 def test_version():

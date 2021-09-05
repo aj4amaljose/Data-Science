@@ -1,3 +1,6 @@
+"""
+Contains Application configuration
+"""
 import os
 
 file_extraction_password = os.environ.get("file_extraction_password")

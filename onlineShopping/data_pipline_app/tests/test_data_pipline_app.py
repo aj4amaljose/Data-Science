@@ -1,4 +1,4 @@
-from data_pipline_app import __version__
+from data_pipline_app.data_pipline_app import __version__
 
 
 def test_version():

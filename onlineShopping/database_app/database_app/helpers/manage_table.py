@@ -2,8 +2,8 @@
 Module to create or delete the table
 """
 
-from models import customers
-from connection import connection_string
+from database_app.database_app.models import customers
+from database_app.database_app.connection import connection_string
 
 engine_model_mappings = {
     'customers': [connection_string, customers]

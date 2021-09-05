@@ -1,3 +1,6 @@
+"""
+Handles Analyse application
+"""
 from apis.customers import request
 from configurations import *
 import uvicorn

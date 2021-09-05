@@ -1,7 +1,15 @@
+"""
+Entrypoint to Tranform App
+"""
 from transform.transforms import *
 
 
 def entry_point(df):
+    """
+    Entrypoint to Dataframe transform
+    :param df: Dataframe
+    :return Transformed df
+    """
     df = df.drop(columns=set({column for column in df.columns} - set(column_schema.keys())))
 
     df_cleansing(df=df,

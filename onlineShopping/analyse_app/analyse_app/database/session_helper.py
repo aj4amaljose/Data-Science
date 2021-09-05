@@ -1,3 +1,6 @@
+"""
+Manages session
+"""
 from .connection import SessionLocal
 
 

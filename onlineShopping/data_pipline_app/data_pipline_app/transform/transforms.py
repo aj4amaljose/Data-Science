@@ -1,9 +1,16 @@
+"""
+Coordinates DF transforms and Column Transforms
+"""
 import os
 from collections import defaultdict
 from .handlers import handler_mapping, df_schema, column_schema
 
 
 def group_column_cleansing_methods(schema):
+    """
+    Tries to relate columns that has same set of excutions to be carried out
+    :param schema: Column Schema
+    """
     column_cleansing_method_info = defaultdict(dict)
 
     for details in schema.items():
@@ -14,6 +21,12 @@ def group_column_cleansing_methods(schema):
 
 
 def create_cleansing_sequence(column, cleansing_methods, method_info):
+    """
+    Creates sequence of transforms to be applied on the Dataframe columns
+    :param column: Column
+    :param cleansing_methods: Cleansing method specified in the schema
+    :param method_info: Method information
+    """
     for index, method in enumerate(cleansing_methods):
         if method in method_info[index]:
             method_info[index][method].append(column)
@@ -22,6 +35,12 @@ def create_cleansing_sequence(column, cleansing_methods, method_info):
 
 
 def column_cleansing_execution(column_cleansing_info, df):
+    """
+    Column Transform
+
+    :param column_cleansing_info: Column cleasing configuration
+    :param df: Dataframe
+    """
     sequences = sorted(column_cleansing_info.keys())
     for sequence in sequences:
         for method_details in column_cleansing_info[sequence].items():
@@ -30,6 +49,13 @@ def column_cleansing_execution(column_cleansing_info, df):
 
 
 def df_cleansing(df, df_schema, sequence, kwargs):
+    """
+    DataFrame transforms
+    :param df: Dataframe
+    :param df_schema: Schema
+    :param sequence: Squence of method
+    :param kwargs: Arguments
+    """
     args = [df, kwargs] if kwargs else [df]
 
     for method in df_schema[sequence]:

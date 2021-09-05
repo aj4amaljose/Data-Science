@@ -1,4 +1,4 @@
-from database_app.models.customers import Customers as CustomerModel
+from database_app.database_app.models.customers import Customers as CustomerModel
 from pydantic import BaseModel, ValidationError, validator, Field
 from fastapi import Query
 from pydantic.typing import Optional

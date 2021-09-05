@@ -51,22 +51,6 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
-name = "database-app"
-version = "0.1.0"
-description = ""
-category = "main"
-optional = false
-python-versions = "^3.8"
-develop = false
-
-[package.dependencies]
-SQLAlchemy = "^1.4.23"
-
-[package.source]
-type = "directory"
-url = "../database_app"
-
-[[package]]
 name = "fastapi"
 version = "0.68.1"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
@@ -329,7 +313,7 @@ python-versions = ">=3.6.1"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "883bf190ccc9e28d10ae0712d9515d8d45668115aaeb61007a588aa0a8f6f781"
+content-hash = "bb04ef56952124963bdcf81c3c4b69ceeae87f1dc3004286c2677b96eb2c34e2"
 
 [metadata.files]
 asgiref = [
@@ -352,7 +336,6 @@ colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
 ]
-database-app = []
 fastapi = [
     {file = "fastapi-0.68.1-py3-none-any.whl", hash = "sha256:94d2820906c36b9b8303796fb7271337ec89c74223229e3cfcf056b5a7d59e23"},
     {file = "fastapi-0.68.1.tar.gz", hash = "sha256:644bb815bae326575c4b2842469fb83053a4b974b82fa792ff9283d17fbbd99d"},
