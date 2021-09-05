@@ -3,8 +3,8 @@ import io
 import pandas as pd
 import zipfile
 import hashlib
-from data_pipline_app.configurations import file_extraction_password
-from data_pipline_app.common.helpers import mapping, set_handler_mapping
+from configurations import file_extraction_password
+from common.helpers import mapping, set_handler_mapping
 
 handler_mapping = mapping
 

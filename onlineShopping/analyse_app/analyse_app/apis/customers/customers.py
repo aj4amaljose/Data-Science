@@ -14,29 +14,50 @@ class Method(str, Enum):
 
 
 class Customers(BaseModel):
-    method: str
+    function: str
     action: str
     data: Optional[dict] = Query(dict())
 
     @property
-    def allowed_types(self):
+    def allowed_actions(self):
         return ["get_info", "query"]
 
     @property
-    def method_map(self):
-        return dict(total_revenue_for_credit_card=self.method_total_revenue_for_credit_card,
-                    percentage_of_customers_purchased_female_items_credit_card=self.method_percentage_of_customers_purchased_female_items_credit_card,
-                    average_revenue_for_ios_or_android_or_desktop=self.method_average_revenue_for_ios_or_android_or_desktop,
-                    subscribed_and_men_and_unisex_customers=self.method_subscribed_and_men_and_unisex_customers
+    def function_map(self):
+        return dict(get_info=dict(total_revenue_for_credit_card=self.method_total_revenue_for_credit_card,
+                                  percentage_of_customers_purchased_female_items_credit_card=self.method_percentage_of_customers_purchased_female_items_credit_card,
+                                  average_revenue_for_ios_or_android_or_desktop=self.method_average_revenue_for_ios_or_android_or_desktop,
+                                  subscribed_and_men_and_unisex_customers=self.method_subscribed_and_men_and_unisex_customers
 
-                    )
+                                  ))
+
+    def validation_execution(self):
+        validation_error_result = []
+        for vaidation in [self.validate_function, self.validate_action]:
+            validation_result = vaidation()
+            if validation_result:
+                validation_error_result.append(validation_result)
+        return validation_error_result
+
+    def validate_function(self):
+        result = None
+        function_map = self.function_map.get(self.action)
+        if function_map and self.function not in function_map:
+            result = "Invalid 'function'. Allowed values are {}".format(function_map.keys())
+        return result
+
+    def validate_action(self):
+        result = None
+        if self.action not in self.allowed_actions:
+            result = "Invalid 'action'. Allowed values are {}".format(self.allowed_actions)
+        return result
 
     def method_execution(self, session):
         method = None
         if self.action == "get_info":
-            method = self.method_map.get(self.method)
+            method = self.function_map.get(self.method)
         elif self.action == "query":
-            pass
+            raise (NotImplementedError)
         else:
             pass
         result = dict(result=None, status="ok")

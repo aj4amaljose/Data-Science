@@ -1,4 +1,4 @@
-from data_pipline_app.transform.transforms import *
+from transform.transforms import *
 
 
 def entry_point(df):

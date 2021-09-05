@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from analyse_app.analyse_app.configurations import db_connection_string
+from configurations import db_connection_string
 
 
 engine = create_engine(

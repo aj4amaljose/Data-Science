@@ -1,6 +1,6 @@
 import os
 
-app_host = os.environ.get("app_host") or 'localhost'
-app_port = os.environ.get("app_port") or 8000
+app_host = os.environ.get("app_host")
+app_port = os.environ.get("app_port")
 db_connection_string = os.environ.get(
-    "connection_string") or r"sqlite:///C:\Users\amalj\PycharmProjects\onlineShopping.db"
+    "connection_string")

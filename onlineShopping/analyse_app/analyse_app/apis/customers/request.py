@@ -1,13 +1,25 @@
 from .customers import Customers
 from fastapi import FastAPI, Depends, status, Response, HTTPException
-from analyse_app.analyse_app.database import session_helper
+from database import session_helper
 from sqlalchemy.orm import Session
 
 
 def entry_point(app):
     @app.post("/customers")
-    def calculate_revenue(customer: Customers, session: Session = Depends(session_helper.get_session)):
+    def calculate_revenue(customer: Customers, response: Response,
+                          session: Session = Depends(session_helper.get_session)):
+        validation_error_result = customer.validation_execution()
+
+        if any(validation_error_result):
+            error_message = ";".join(validation_error_result)
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error_message)
+
         try:
-            return customer.method_execution(session)
+            execution_result = customer.method_execution(session)
+            return execution_result
+
+        except NotImplementedError:
+            raise HTTPException(status_code=status.HTTP_501_NOT_IMPLEMENTED, detail="Not implemented. Please contact")
+
         except Exception as exc:
-            print(exc)
+            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=exc)
